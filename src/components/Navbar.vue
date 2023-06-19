@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="bg-[#0A192F] grid grid-cols-[0.5fr_5fr_1fr] md:grid-cols-[1fr_5fr_1fr_5fr_1fr] top-0 z-10 h-[100px] w-full sticky"
+    class="bg-[rgba(10,_25,_47,_0.85)] grid grid-cols-[0.5fr_5fr_1fr] md:grid-cols-[1fr_5fr_1fr_5fr_1fr] top-0 z-10 h-[100px] w-full sticky md:backdrop-blur-[10px]"
   >
     <h2
       class="text-2xl block font-bold self-center col-start-2 col-end-3 text-[#94ffed]"
@@ -12,23 +12,23 @@
     >
       <li class="list-item">
         <a
-          href="#"
-          class="text-[0.9rem] cursor-pointer duration-200 ease-in-out font-mono underline decoration-[#94ffed] hover:decoration-2 hover:text-slate-100"
-          >Home</a
-        >
-      </li>
-      <li class="list-item">
-        <a
-          href="#portfolio"
-          class="text-[0.9rem] cursor-pointer duration-200 ease-in-out font-mono underline decoration-[#94ffed] hover:decoration-2 hover:text-slate-100"
-          >Portfolio</a
-        >
-      </li>
-      <li class="list-item">
-        <a
           href="#about"
           class="text-[0.9rem] cursor-pointer duration-200 ease-in-out font-mono underline decoration-[#94ffed] hover:decoration-2 hover:text-slate-100"
           >About me</a
+        >
+      </li>
+      <li class="list-item">
+        <a
+          href="#experience"
+          class="text-[0.9rem] cursor-pointer duration-200 ease-in-out font-mono underline decoration-[#94ffed] hover:decoration-2 hover:text-slate-100"
+          >Experience</a
+        >
+      </li>
+      <li class="list-item">
+        <a
+          href="#projects"
+          class="text-[0.9rem] cursor-pointer duration-200 ease-in-out font-mono underline decoration-[#94ffed] hover:decoration-2 hover:text-slate-100"
+          >Projects</a
         >
       </li>
       <li class="list-item">
@@ -41,35 +41,35 @@
     </ul>
 
     <ul
-      :class="`fixed h-[100vh] w-[60vw] z-11 right-0 top-0 bg-[#112240] text-[#ccd6f6] flex flex-col justify-around items-center shadow-2xl duration-200 ease-out md:hidden ${
+      :class="`fixed h-[100vh] w-[60vw] z-11 right-0 top-0 bg-[#112240] text-[#ccd6f6] gap-20 flex flex-col justify-center items-center shadow-2xl duration-200 ease-out md:hidden ${
         is_expanded ? 'translate-x-[0vw]' : 'translate-x-[100vw]'
       }`"
     >
       <li class="list-item">
         <a
-          href="#"
-          class="text-[0.9rem] cursor-pointer duration-200 ease-in-out font-mono underline decoration-[#94ffed] hover:decoration-2 hover:text-slate-100"
-          >HOME</a
-        >
-      </li>
-      <li class="list-item">
-        <a
-          href="#portfolio"
-          class="text-[0.9rem] cursor-pointer duration-200 ease-in-out font-mono underline decoration-[#94ffed] hover:decoration-2 hover:text-slate-100"
-          >PORTFOLIO</a
-        >
-      </li>
-      <li class="list-item">
-        <a
           href="#about"
-          class="text-[0.9rem] cursor-pointer duration-200 ease-in-out font-mono underline decoration-[#94ffed] hover:decoration-2 hover:text-slate-100"
-          >ABOUT ME</a
+          class="text-xl cursor-pointer duration-200 ease-in-out font-mono underline decoration-[#94ffed] hover:decoration-2 hover:text-slate-100"
+          >About me</a
+        >
+      </li>
+      <li class="list-item">
+        <a
+          href="#experience"
+          class="text-xl cursor-pointer duration-200 ease-in-out font-mono underline decoration-[#94ffed] hover:decoration-2 hover:text-slate-100"
+          >Experience</a
+        >
+      </li>
+      <li class="list-item">
+        <a
+          href="#projects"
+          class="text-xl cursor-pointer duration-200 ease-in-out font-mono underline decoration-[#94ffed] hover:decoration-2 hover:text-slate-100"
+          >Projects</a
         >
       </li>
       <li class="list-item">
         <a
           href="#contact"
-          class="text-[0.9rem] cursor-pointer duration-200 ease-in-out font-mono underline decoration-[#94ffed] hover:decoration-2 hover:text-slate-100"
+          class="text-xl cursor-pointer duration-200 ease-in-out font-mono underline decoration-[#94ffed] hover:decoration-2 hover:text-slate-100"
           >CONTACT</a
         >
       </li>
@@ -94,11 +94,9 @@
 <script setup>
 import { ref } from 'vue';
 
-const is_expanded = ref(localStorage.getItem('is_expanded') === 'true');
+const is_expanded = ref(false);
 
 const ToggleMenu = () => {
   is_expanded.value = !is_expanded.value;
-
-  localStorage.setItem('is_expanded', is_expanded.value);
 };
 </script>

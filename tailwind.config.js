@@ -2,7 +2,20 @@
 export default {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        fadeIn: 'fadeIn 0.5s ease-in forwards',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: 0, transform: 'translateY(75px)' },
+          '100%': { opacity: 1, transform: 'translateY(0px)' },
+        },
+      },
+    },
+  },
+  variants: {
+    animation: ['motion-safe'],
   },
   plugins: [],
 };

@@ -1,7 +1,10 @@
 <template>
   <section
-    class="max-w-[900px] py-[60px] px-0 my-0 mx-auto text-[#8892b0] min-[480px]:py-[80px] md:py-[100px]"
+    :class="`max-w-[900px] py-[60px] px-0 my-0 mx-auto text-[#8892b0] min-[480px]:py-[80px] md:py-[100px] ${
+      shown ? 'animate-fadeIn animate-goUp' : 'opacity-0'
+    }`"
     id="about"
+    ref="scrollRef"
   >
     <h2
       class="flex items-center relative mt-[10px] mb-10 mx-0 w-full text-[clamp(26px,_5vw,_32px)] whitespace-nowrap font-semibold text-[#ccd6f6] leading-[1.1] font-sans after:content-[''] after:block after:relative after:-top-[1px] after:ml-[10px] after:h-[1px] after:bg-[#233554] after:w-full after:sm:ml-5 after:md:w-[200px] after:lg:w-[300px]"
@@ -91,3 +94,39 @@
     </div>
   </section>
 </template>
+
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue';
+
+// See this file to see how the IntersectionObserver is implemented
+import { onIntersect } from '../composables/onIntersect';
+
+const observer = ref({});
+const scrollRef = ref({});
+let shown = ref(false);
+
+// This is the callback being called on intersection
+const onEnter = () => {
+  shown.value = true;
+  console.log('entered');
+};
+
+// This is the (optional) callback being called when the element no longer intersects
+const onExit = () => {};
+// When the component is mounted, start observing
+onMounted(() => {
+  /* Our observer composable is used here (onIntersect) with 
+      onEnter as the callback when intersecting and 
+      onExit as the callback when no longer intersecting.
+      {threshold: 0.8} is the IntersectionObserver Options
+  */
+  observer.value = onIntersect(scrollRef.value, onEnter, onExit, false, {
+    threshold: 0.2,
+  });
+});
+
+// When the component is removed, disconnect the observer (clean-up step)
+onUnmounted(() => {
+  observer.value.disconnect();
+});
+</script>

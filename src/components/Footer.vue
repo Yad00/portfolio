@@ -64,7 +64,10 @@
       </ul>
     </div>
     <div class="text-[#a8b2d1] font-mono text-xs leading-none">
-      <a href="\" class="p-[10px] inline-block relative cursor-pointer"
+      <a
+        href="https://github.com/bchiang7"
+        target="_blank"
+        class="p-[10px] inline-block relative cursor-pointer"
         >Designed by Brittany Chiang & Built by Yad</a
       >
     </div>
